@@ -1,12 +1,15 @@
 // ignore_for_file: non_constant_identifier_names, prefer_const_constructors
 
 import 'package:flutter/material.dart';
+
 import 'package:get/get.dart';
 import 'package:uni_toni_test/screens/home/widgets/custom_text_field.dart';
 import 'package:uni_toni_test/screens/home/widgets/search_result_list.dart';
 
 import '../../controller/news_controller.dart';
 import '../../utils/size_config.dart';
+import 'package:uni_toni_test/screens/home/widgets/custom_text_field.dart';
+import 'package:uni_toni_test/screens/home/widgets/search_result_list.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -16,6 +19,7 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+
   News_Controller news_controller = Get.put(News_Controller());
   TextEditingController field_One_Controller = TextEditingController();
   TextEditingController field_Two_Controller = TextEditingController();
@@ -37,16 +41,21 @@ class _HomeScreenState extends State<HomeScreen> {
             children: [
               CustomTextField(
                 controller: field_One_Controller,
+
                 onChanged: (text1) => news_controller.getNews(text1),
+
                 color: Colors.red.shade200,
                 hintText: 'Field_One',
               ),
               CustomTextField(
+
                 onChanged: (text2) => news_controller.getNews(text2),
+
                 controller: field_Two_Controller,
                 color: Colors.green.shade200,
                 hintText: 'Field_Two',
               ),
+
               GetBuilder<News_Controller>(
                 builder: (controller) => SizedBox(
                   height: getPercentScreenHeight(30),
@@ -104,6 +113,17 @@ class _HomeScreenState extends State<HomeScreen> {
                     },
                   ),
                 ),
+
+              Search_Result_List(
+                itemCount: 3,
+                color: Colors.red.shade200,
+                stringData: 'ssss',
+              ),
+              Search_Result_List(
+                itemCount: 3,
+                color: Colors.green.shade200,
+                stringData: 'ssss',
+
               ),
             ],
           ),
