@@ -6,10 +6,22 @@ import '../../../utils/size_config.dart';
 
 class CustomTextField extends StatefulWidget {
   CustomTextField(
+
+      {super.key,
+      required this.controller,
+      this.color,
+      this.hintText,
+      required this.onChanged});
+  TextEditingController controller;
+  Color? color;
+  String? hintText;
+  Function(String)? onChanged;
+
       {super.key, required this.controller, this.color, this.hintText});
   TextEditingController controller;
   Color? color;
   String? hintText;
+
   @override
   State<CustomTextField> createState() => _CustomTextFieldState();
 }
@@ -31,7 +43,8 @@ class _CustomTextFieldState extends State<CustomTextField> {
               borderRadius: BorderRadius.circular(10.0),
             ),
             child: TextField(
-              controller: widget.controller,
+              onChanged: widget.onChanged,
+             controller: widget.controller,
               cursorRadius: Radius.circular(2),
               decoration: InputDecoration(
                   border: InputBorder.none, hintText: widget.hintText),
